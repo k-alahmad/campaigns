@@ -5,9 +5,9 @@ import LinkElement from "./LinkElement";
 import { MdDehaze, MdExpandLess, MdExpandMore } from "react-icons/md";
 import { handleScroll } from "../../../helpers/scroll";
 import { NavElement } from "../../../data/navData";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Language from "./Language";
-import { selectPage, selectProject } from "../../../redux/systemSettingsSlice";
+import { selectPage } from "../../../redux/systemSettingsSlice";
 import { useSelector } from "react-redux";
 const NavBar = () => {
   const { t } = useTranslation();
@@ -19,9 +19,7 @@ const NavBar = () => {
     id: "",
   });
   const location = useLocation();
-  const navigate = useNavigate();
   const page = useSelector(selectPage);
-  const project = useSelector(selectProject);
 
   const listenScrollEvent = (event) => {
     if (document.documentElement.scrollTop < 300) {
@@ -60,7 +58,7 @@ const NavBar = () => {
             header === "white" ||
             location.pathname == "/privacy-policy" ||
             location.pathname == "/thankyou"
-              ? page.Colors.Primary
+              ? page?.Colors.Primary
               : "transparent",
         }}
       >
@@ -79,8 +77,8 @@ const NavBar = () => {
           <div
             className="absolute left-1/2 -translate-x-1/2 p-[6px] px-4 rounded-md shadow-md animate-pulse "
             style={{
-              backgroundColor: page.Colors?.Secondary,
-              color: page.Colors?.Primary,
+              backgroundColor: page?.Colors?.Secondary,
+              color: page?.Colors?.Primary,
             }}
           >
             <p
@@ -104,7 +102,10 @@ const NavBar = () => {
               link={e.link}
               selectedLink={selectedLink}
               header={header}
-              onClick={() => setMobileOpen(false)}
+              onClick={() => {
+                setMobileOpen(false);
+                handleScroll(e.link);
+              }}
             />
           ) : (
             <React.Fragment key={i}>

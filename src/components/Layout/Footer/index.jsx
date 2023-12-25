@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <div
       style={{
-        background: page.Colors?.Primary,
+        background: page?.Colors?.Primary,
       }}
       className="w-full flex justify-center items-center"
     >

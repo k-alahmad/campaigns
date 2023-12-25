@@ -12,9 +12,10 @@ const Header = () => {
   return (
     <>
       <div
+        id="home"
         className={`pt-16 h-[40vh]`}
         style={{
-          backgroundColor: page.Colors?.Primary,
+          backgroundColor: page?.Colors?.Primary,
         }}
       />
       <div className="flex flex-col justify-center items-center">
@@ -27,7 +28,7 @@ const Header = () => {
           <div
             className="absolute w-full h-full rounded-lg top-0 left-0"
             style={{
-              backgroundColor: page.Colors?.Primary,
+              backgroundColor: page?.Colors?.Primary,
               opacity: "30%",
             }}
           />
@@ -40,7 +41,7 @@ const Header = () => {
           <div
             className="absolute w-full bottom-0 rounded-lg left-0 flex justify-center items-center  text-[18px] font-semibold sm:text-small"
             style={{
-              backgroundColor: page.Colors?.Primary,
+              backgroundColor: page?.Colors?.Primary,
             }}
           >
             {page?.projects.map((item, index) => {
@@ -51,12 +52,12 @@ const Header = () => {
                   style={{
                     backgroundColor:
                       project.id == index
-                        ? page.Colors?.Secondary
-                        : page.Colors?.Primary,
+                        ? page?.Colors?.Secondary
+                        : page?.Colors?.Primary,
                     color:
                       project.id == index
-                        ? page.Colors?.Primary
-                        : page.Colors?.Secondary,
+                        ? page?.Colors?.Primary
+                        : page?.Colors?.Secondary,
                   }}
                   onClick={() => {
                     navigate(`/${page?.slug}/${item?.slug}`);

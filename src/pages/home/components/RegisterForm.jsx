@@ -163,15 +163,15 @@ const RegisterForm = () => {
           }}
           dropdownClass="!backdrop-blur-[21px]"
           dropdownStyle={{
-            backgroundColor: page.Colors?.Primary,
+            backgroundColor: page?.Colors?.Primary,
             opacity: "70%",
-            color: page.Colors?.Third,
+            color: page?.Colors?.Third,
           }}
           searchClass="!backdrop-blur-[21px]"
           searchStyle={{
-            backgroundColor: page.Colors?.Primary,
+            backgroundColor: page?.Colors?.Primary,
             opacity: "70%",
-            color: page.Colors?.Secondary,
+            color: page?.Colors?.Secondary,
           }}
           inputStyle={{
             direction: "ltr",
@@ -193,12 +193,12 @@ const RegisterForm = () => {
                     style={{
                       backgroundColor:
                         values.Project == item.ProjectName.en
-                          ? page.Colors?.Secondary
-                          : page.Colors?.Primary,
+                          ? page?.Colors?.Secondary
+                          : page?.Colors?.Primary,
                       color:
                         values.Project == item.ProjectName.en
-                          ? page.Colors?.Primary
-                          : page.Colors?.Secondary,
+                          ? page?.Colors?.Primary
+                          : page?.Colors?.Secondary,
                     }}
                     onClick={() =>
                       setValues({ ...values, Project: item.ProjectName.en })
@@ -219,8 +219,8 @@ const RegisterForm = () => {
             isLoading && "animate-pulse"
           } `}
           style={{
-            backgroundColor: page.Colors?.Secondary,
-            color: page.Colors?.Primary,
+            backgroundColor: page?.Colors?.Secondary,
+            color: page?.Colors?.Primary,
           }}
           onClick={handleSubmit}
           disabled={disabled}

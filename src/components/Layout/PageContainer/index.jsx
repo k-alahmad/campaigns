@@ -17,14 +17,15 @@ import {
 const PageLayout = ({ children }) => {
   const location = useLocation();
   const dispatch = useDispatch();
+  let page;
   useEffect(() => {
     let fullPath = location.pathname;
     let slashedPageSlug = fullPath.substring(0, fullPath.lastIndexOf("/"));
     let pageSlug = slashedPageSlug.substring(1);
-    let page = LandingPages.find((x) => x.slug == pageSlug);
+    page = LandingPages.find((x) => x.slug == pageSlug);
     let slashedProjectSlug = fullPath.substring(fullPath.lastIndexOf("/"));
     let projectSlug = slashedProjectSlug.substring(1);
-    let project = page.projects.find((x) => x.slug == projectSlug);
+    let project = page?.projects.find((x) => x.slug == projectSlug);
     dispatch(setCurrentPage({ page: page }));
     dispatch(setCurrentProject({ project: project }));
   }, [location.pathname]);
@@ -45,7 +46,10 @@ const PageLayout = ({ children }) => {
       <Modal />
       <GalleryModal />
       <div
-        className="fixed bottom-20 md:bottom-24 right-3 md:right-5 bg-primary  backdrop-blur-[21px] text-white p-3 rounded-full cursor-pointer z-40 shadow-2xl drop-shadow-2xl"
+        className="fixed bottom-20 md:bottom-24 right-3 md:right-5 backdrop-blur-[21px] text-white p-3 rounded-full cursor-pointer z-40 shadow-2xl drop-shadow-2xl"
+        style={{
+          backgroundColor: page?.Colors?.Primary,
+        }}
         onClick={(e) => {
           e.preventDefault();
           window.open(

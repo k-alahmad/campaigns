@@ -35,7 +35,7 @@ export default function Drawer({ children, isOpen, setIsOpen }) {
         <article
           className="relative w-full pb-10 flex flex-col justify-start items-center space-y-6 overflow-y-scroll h-full backdrop-blur-[200px]"
           style={{
-            backgroundColor: page.Colors?.Primary,
+            backgroundColor: page?.Colors?.Primary,
             opacity: "50%",
           }}
         >

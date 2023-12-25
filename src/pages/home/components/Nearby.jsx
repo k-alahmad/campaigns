@@ -7,12 +7,12 @@ const Nearby = () => {
   const page = useSelector(selectPage);
   const project = useSelector(selectProject);
   return (
-    <div className="flex justify-center items-center mt-12 ">
+    <div id="nearby" className="flex justify-center items-center mt-12 ">
       <div className="w-[80vw]">
         <p
           className="text-center text-med md:text-big font-bold"
           style={{
-            color: page.Colors?.Primary,
+            color: page?.Colors?.Primary,
           }}
         >
           {t("Nearby Places")}
@@ -32,7 +32,7 @@ const Nearby = () => {
                 <div
                   className="absolute top-0 left-0 w-full h-full rounded-md"
                   style={{
-                    backgroundColor: page.Colors?.Primary,
+                    backgroundColor: page?.Colors?.Primary,
                     opacity: "40%",
                   }}
                 />

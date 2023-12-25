@@ -6,7 +6,7 @@ const Info = () => {
   const { i18n } = useTranslation();
   const project = useSelector(selectProject);
   return (
-    <div className="flex flex-col justify-center items-center mt-12">
+    <div id="info" className="flex flex-col justify-center items-center mt-12">
       <div className="w-[80vw] flex flex-col justify-center items-center">
         <p className="font-bold text-med sm:text-big text-center">
           {project?.InfoTitle[i18n.language]}

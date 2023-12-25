@@ -47,7 +47,7 @@ export default function Dropdown() {
             open ? "scale-100" : "scale-0"
           } absolute z-10 top-10 -left-32 origin-top rounded-lg shadow-2xl drop-shadow-2xl backdrop-blur-[50px] transition-all duration-300 p-4 space-y-2 text-white text-smaller w-40`}
           style={{
-            backgroundColor: page.Colors?.Primary,
+            backgroundColor: page?.Colors?.Primary,
           }}
         >
           <div

@@ -20,7 +20,7 @@ const HomePage = () => {
         <div
           className="mt-6 flex flex-col justify-center items-center"
           style={{
-            backgroundColor: page.Colors?.Primary,
+            backgroundColor: page?.Colors?.Primary,
           }}
         >
           <Video />

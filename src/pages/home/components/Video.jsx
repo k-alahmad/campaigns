@@ -4,7 +4,10 @@ import { selectProject } from "../../../redux/systemSettingsSlice";
 const Video = () => {
   const project = useSelector(selectProject);
   return (
-    <div className="w-[80vw] h-[300px] sm:h-[400px]  md:h-[650px] mt-12">
+    <div
+      id="video"
+      className="w-[80vw] h-[300px] sm:h-[400px]  md:h-[650px] mt-12"
+    >
       <video
         autoPlay
         loop
