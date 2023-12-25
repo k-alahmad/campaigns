@@ -8,24 +8,25 @@ import GalleryModal from "../../UI/GalleryModal";
 import MessageBox from "../../UI/Message";
 import Logo from "../../../assets/logos/AVA-Logo.svg";
 import { useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LandingPages } from "../../../data/PagesData";
 import {
+  selectPage,
   setCurrentPage,
   setCurrentProject,
 } from "../../../redux/systemSettingsSlice";
 const PageLayout = ({ children }) => {
   const location = useLocation();
   const dispatch = useDispatch();
-  let page;
+  const page = useSelector(selectPage);
   useEffect(() => {
     let fullPath = location.pathname;
     let slashedPageSlug = fullPath.substring(0, fullPath.lastIndexOf("/"));
     let pageSlug = slashedPageSlug.substring(1);
-    page = LandingPages.find((x) => x.slug == pageSlug);
+    let page = LandingPages.find((x) => x.slug == pageSlug);
     let slashedProjectSlug = fullPath.substring(fullPath.lastIndexOf("/"));
     let projectSlug = slashedProjectSlug.substring(1);
-    let project = page?.projects.find((x) => x.slug == projectSlug);
+    let project = page.projects.find((x) => x.slug == projectSlug);
     dispatch(setCurrentPage({ page: page }));
     dispatch(setCurrentProject({ project: project }));
   }, [location.pathname]);
