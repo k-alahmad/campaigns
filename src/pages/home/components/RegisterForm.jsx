@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { omit } from "lodash";
 import { MdMail, MdPerson } from "react-icons/md";
 import PhoneInput from "react-phone-input-2";
@@ -13,6 +13,7 @@ import emailjs from "@emailjs/browser";
 import { selectListRegisterState } from "../../../redux/modal.slice";
 import { useSelector } from "react-redux";
 import { selectPage, selectProject } from "../../../redux/systemSettingsSlice";
+import { useLocation, useNavigate } from "react-router-dom";
 const defaultFormState = {
   Email: "",
   FullName: "",
@@ -25,7 +26,8 @@ const RegisterForm = () => {
   const dispatch = useDispatch();
   const page = useSelector(selectPage);
   const project = useSelector(selectProject);
-
+  const navigate = useNavigate();
+  const location = useLocation();
   const listRegister = useSelector(selectListRegisterState);
   const {
     disabled,
@@ -59,6 +61,12 @@ const RegisterForm = () => {
         }
       );
   };
+  useEffect(() => {
+    setValues({
+      ...values,
+      Project: project?.ProjectName.en,
+    });
+  }, [page, project]);
   async function submit(e) {
     try {
       let sameEmail = listRegister.find((element) => {
@@ -200,9 +208,10 @@ const RegisterForm = () => {
                           ? page?.Colors?.Primary
                           : page?.Colors?.Secondary,
                     }}
-                    onClick={() =>
-                      setValues({ ...values, Project: item.ProjectName.en })
-                    }
+                    onClick={() => {
+                      navigate(`/${page?.slug}/${item?.slug}`);
+                      // setValues({ ...values, Project: item.ProjectName.en });
+                    }}
                   >
                     {item.ProjectName[i18n.language]}
                   </div>
