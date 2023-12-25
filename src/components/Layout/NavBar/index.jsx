@@ -7,7 +7,8 @@ import { handleScroll } from "../../../helpers/scroll";
 import { NavElement } from "../../../data/navData";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Language from "./Language";
-import colors from "../../../settings";
+import { selectPage, selectProject } from "../../../redux/systemSettingsSlice";
+import { useSelector } from "react-redux";
 const NavBar = () => {
   const { t } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -19,6 +20,9 @@ const NavBar = () => {
   });
   const location = useLocation();
   const navigate = useNavigate();
+  const page = useSelector(selectPage);
+  const project = useSelector(selectProject);
+
   const listenScrollEvent = (event) => {
     if (document.documentElement.scrollTop < 300) {
       return setHeader("transparent");
@@ -56,7 +60,7 @@ const NavBar = () => {
             header === "white" ||
             location.pathname == "/privacy-policy" ||
             location.pathname == "/thankyou"
-              ? colors.primary
+              ? page.Colors.Primary
               : "transparent",
         }}
       >
@@ -72,7 +76,13 @@ const NavBar = () => {
               <p className="text-white">{t("menu")}</p>
             </div>
           </div>
-          <div className="absolute left-1/2 -translate-x-1/2 p-[6px] px-4 bg-white text-primary rounded-md shadow-md animate-pulse ">
+          <div
+            className="absolute left-1/2 -translate-x-1/2 p-[6px] px-4 rounded-md shadow-md animate-pulse "
+            style={{
+              backgroundColor: page.Colors?.Secondary,
+              color: page.Colors?.Primary,
+            }}
+          >
             <p
               className=" text-[14px] md:text-tiny cursor-pointer"
               onClick={() => handleScroll("register")}

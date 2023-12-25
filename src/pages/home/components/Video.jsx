@@ -1,5 +1,8 @@
 import React from "react";
-const Video = ({ project }) => {
+import { useSelector } from "react-redux";
+import { selectProject } from "../../../redux/systemSettingsSlice";
+const Video = () => {
+  const project = useSelector(selectProject);
   return (
     <div className="w-[80vw] h-[300px] sm:h-[400px]  md:h-[650px] mt-12">
       <video
@@ -9,7 +12,7 @@ const Video = ({ project }) => {
         controls
         id="video"
         className="w-full h-full object-fill object-center"
-        src={project.Video}
+        src={project?.Video}
         playsInline
       />
     </div>

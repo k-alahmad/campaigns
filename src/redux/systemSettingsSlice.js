@@ -1,26 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  primary: "",
-  secondary: "",
-  third: "",
+  page: {},
+  project: {},
 };
 const systemSettingsSlice = createSlice({
   name: "systemSettings",
   initialState,
   reducers: {
-    setColors: (state, action) => {
-      state.primary = action.payload.primary;
-      state.secondary = action.payload.secondary;
-      state.third = action.payload.third;
+    setCurrentPage: (state, action) => {
+      state.page = action.payload.page;
     },
-    resetColoes: (state, action) => {
+    setCurrentProject: (state, action) => {
+      state.project = action.payload.project;
+    },
+    resetState: (state, action) => {
       state = initialState;
     },
   },
 });
 
-export const { setColors, resetColoes } = systemSettingsSlice.actions;
+export const { setCurrentPage, setCurrentProject, resetState } =
+  systemSettingsSlice.actions;
 export const selectSystemSettings = (state) => state.systemSettings;
+export const selectProject = (state) => state.systemSettings.project;
+export const selectPage = (state) => state.systemSettings.page;
 
 export default systemSettingsSlice.reducer;

@@ -5,9 +5,12 @@ import {
   MdRadioButtonChecked,
   MdRadioButtonUnchecked,
 } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { selectPage } from "../../../redux/systemSettingsSlice";
 export default function Dropdown() {
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
+  const page = useSelector(selectPage);
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     localStorage.setItem("lng", lng);
@@ -42,7 +45,10 @@ export default function Dropdown() {
           onClick={() => setOpen(false)}
           className={`${
             open ? "scale-100" : "scale-0"
-          } absolute z-10 top-10 -left-32 origin-top bg-primary/20 rounded-lg shadow-2xl drop-shadow-2xl backdrop-blur-[50px] transition-all duration-300 p-4 space-y-2 text-white text-smaller w-40`}
+          } absolute z-10 top-10 -left-32 origin-top rounded-lg shadow-2xl drop-shadow-2xl backdrop-blur-[50px] transition-all duration-300 p-4 space-y-2 text-white text-smaller w-40`}
+          style={{
+            backgroundColor: page.Colors?.Primary,
+          }}
         >
           <div
             className="flex justify-start items-center cursor-pointer"

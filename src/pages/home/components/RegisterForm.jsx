@@ -12,6 +12,7 @@ import { LandingPages } from "../../../data/PagesData";
 import emailjs from "@emailjs/browser";
 import { selectListRegisterState } from "../../../redux/modal.slice";
 import { useSelector } from "react-redux";
+import { selectPage, selectProject } from "../../../redux/systemSettingsSlice";
 const defaultFormState = {
   Email: "",
   FullName: "",
@@ -19,9 +20,11 @@ const defaultFormState = {
   PhoneNo: "",
   Project: LandingPages[0].projects[0].ProjectName.en,
 };
-const RegisterForm = ({ page, colors }) => {
+const RegisterForm = () => {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
+  const page = useSelector(selectPage);
+  const project = useSelector(selectProject);
 
   const listRegister = useSelector(selectListRegisterState);
   const {
@@ -34,7 +37,7 @@ const RegisterForm = ({ page, colors }) => {
     handleSubmit,
   } = useForm(submit, {
     ...defaultFormState,
-    Project: page.projects[0].ProjectName.en,
+    Project: page?.projects[0].ProjectName.en,
   });
   const isLoading = false;
 
@@ -160,15 +163,15 @@ const RegisterForm = ({ page, colors }) => {
           }}
           dropdownClass="!backdrop-blur-[21px]"
           dropdownStyle={{
-            backgroundColor: colors.Primary,
+            backgroundColor: page.Colors?.Primary,
             opacity: "70%",
-            color: colors.Third,
+            color: page.Colors?.Third,
           }}
           searchClass="!backdrop-blur-[21px]"
           searchStyle={{
-            backgroundColor: colors.Primary,
+            backgroundColor: page.Colors?.Primary,
             opacity: "70%",
-            color: colors.Secondary,
+            color: page.Colors?.Secondary,
           }}
           inputStyle={{
             direction: "ltr",
@@ -190,12 +193,12 @@ const RegisterForm = ({ page, colors }) => {
                     style={{
                       backgroundColor:
                         values.Project == item.ProjectName.en
-                          ? colors.Secondary
-                          : colors.Primary,
+                          ? page.Colors?.Secondary
+                          : page.Colors?.Primary,
                       color:
                         values.Project == item.ProjectName.en
-                          ? colors.Primary
-                          : colors.Secondary,
+                          ? page.Colors?.Primary
+                          : page.Colors?.Secondary,
                     }}
                     onClick={() =>
                       setValues({ ...values, Project: item.ProjectName.en })
@@ -216,8 +219,8 @@ const RegisterForm = ({ page, colors }) => {
             isLoading && "animate-pulse"
           } `}
           style={{
-            backgroundColor: colors.Secondary,
-            color: colors.Primary,
+            backgroundColor: page.Colors?.Secondary,
+            color: page.Colors?.Primary,
           }}
           onClick={handleSubmit}
           disabled={disabled}

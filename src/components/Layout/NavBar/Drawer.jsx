@@ -2,8 +2,11 @@ import React from "react";
 import { MdClose } from "react-icons/md";
 import Logo from "../../../assets/logos/AVA-Logo.svg";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { selectPage } from "../../../redux/systemSettingsSlice";
 export default function Drawer({ children, isOpen, setIsOpen }) {
   const { i18n } = useTranslation();
+  const page = useSelector(selectPage);
   return (
     <main
       className={
@@ -29,7 +32,13 @@ export default function Drawer({ children, isOpen, setIsOpen }) {
               }  `)
         }
       >
-        <article className="relative w-full pb-10 flex flex-col justify-start items-center space-y-6 overflow-y-scroll h-full bg-primary/50 backdrop-blur-[21px]">
+        <article
+          className="relative w-full pb-10 flex flex-col justify-start items-center space-y-6 overflow-y-scroll h-full backdrop-blur-[200px]"
+          style={{
+            backgroundColor: page.Colors?.Primary,
+            opacity: "50%",
+          }}
+        >
           <header
             dir={i18n.language == "ar" ? "ltr" : "rtl"}
             className="p-4 font-bold w-full flex justify-between items-center"
