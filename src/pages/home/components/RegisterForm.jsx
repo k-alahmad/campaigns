@@ -11,7 +11,7 @@ import emailjs from "@emailjs/browser";
 import { selectListRegisterState } from "../../../redux/modal.slice";
 import { useSelector } from "react-redux";
 import { selectPage, selectProject } from "../../../redux/systemSettingsSlice";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const defaultFormState = {
   Email: "",
   FullName: "",
@@ -26,7 +26,6 @@ const RegisterForm = () => {
   const page = useSelector(selectPage);
   const project = useSelector(selectProject);
   const navigate = useNavigate();
-  const location = useLocation();
   const listRegister = useSelector(selectListRegisterState);
   const {
     disabled,
@@ -73,7 +72,7 @@ const RegisterForm = () => {
         return element.email == values.Email;
       });
       let samePhone = listRegister.find((element) => {
-        return element.phone == values.PhoneNo;
+        return element.phoneNo == values.PhoneNo;
       });
       if (!sameEmail && !samePhone) {
         const response = await fetch(import.meta.env.VITE_ZAPPIER_URL, {
@@ -95,7 +94,7 @@ const RegisterForm = () => {
         alert("We Already Have a registration with this data");
       }
     } catch (error) {
-      console.error("Error here:", error);
+      console.log("Error here:", error);
     }
     setValues(defaultFormState);
   }
