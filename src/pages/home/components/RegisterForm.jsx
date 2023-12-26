@@ -78,7 +78,7 @@ const RegisterForm = () => {
       if (!sameEmail && !samePhone) {
         const response = await fetch(import.meta.env.VITE_ZAPPIER_URL, {
           method: "POST",
-          body: values,
+          body: form.current,
           "Content-Type": "multipart/form-data",
         });
         sendEmail(e);
