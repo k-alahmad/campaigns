@@ -69,7 +69,7 @@ const RegisterForm = () => {
   }, [page, project]);
   async function submit(e) {
     let formData = new FormData(form.current);
-
+    formData.append("Project", values.Project);
     try {
       let sameEmail = listRegister.find((element) => {
         return element.email == values.email;
@@ -196,7 +196,6 @@ const RegisterForm = () => {
 
         <div className="space-y-1">
           <p className="text-tiny text-white">{t("Project")} </p>
-
           <div className="flex justify-center items-center border-[1px] rounded-md p-1 gap-x-2">
             {page.projects.map((item, index) => {
               return (
