@@ -19,7 +19,8 @@ const defaultFormState = {
   FullName: "",
   Gender: "Male",
   PhoneNo: "",
-  Project: LandingPages[0].projects[0].ProjectName.en,
+  Page: "",
+  Project: "",
 };
 const RegisterForm = () => {
   const { t, i18n } = useTranslation();
@@ -40,6 +41,7 @@ const RegisterForm = () => {
   } = useForm(submit, {
     ...defaultFormState,
     Project: page?.projects[0].ProjectName.en,
+    Page: page?.PageName.en,
   });
   const isLoading = false;
 
@@ -65,6 +67,7 @@ const RegisterForm = () => {
     setValues({
       ...values,
       Project: project?.ProjectName.en,
+      Page: page?.PageName.en,
     });
   }, [page, project]);
   async function submit(e) {
