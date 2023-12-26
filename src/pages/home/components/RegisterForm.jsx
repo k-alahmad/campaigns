@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { omit } from "lodash";
 import { MdMail, MdPerson } from "react-icons/md";
 import PhoneInput from "react-phone-input-2";
@@ -26,6 +26,7 @@ const RegisterForm = () => {
   const page = useSelector(selectPage);
   const project = useSelector(selectProject);
   const navigate = useNavigate();
+  const form = useRef();
   const listRegister = useSelector(selectListRegisterState);
   const {
     disabled,
@@ -47,7 +48,7 @@ const RegisterForm = () => {
       .sendForm(
         "service_5wdnu6j",
         "template_slqqcpm",
-        values,
+        form.current,
         "sxh5TJan60LQqD6Sw"
       )
       .then(
@@ -67,6 +68,8 @@ const RegisterForm = () => {
     });
   }, [page, project]);
   async function submit(e) {
+    console.log(form.current);
+    console.log(values);
     try {
       let sameEmail = listRegister.find((element) => {
         return element.email == values.Email;
@@ -103,7 +106,10 @@ const RegisterForm = () => {
       <p className="text-secondary font-semibold text-4xl mb-4 flex justify-center items-center">
         For more information
       </p>
-      <form className="flex flex-col justify-between items-stretch h-full w-full space-y-4">
+      <form
+        ref={form}
+        className="flex flex-col justify-between items-stretch h-full w-full space-y-4"
+      >
         <CustomInput
           icon={<MdPerson className="text-white text-med" />}
           placeholder={t("formFullName")}
