@@ -58,7 +58,7 @@ const NavBar = () => {
             header === "white" ||
             location.pathname == "/privacy-policy" ||
             location.pathname == "/thankyou"
-              ? page?.Colors.Primary
+              ? page?.Colors?.Primary
               : "transparent",
         }}
       >

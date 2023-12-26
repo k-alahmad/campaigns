@@ -6,11 +6,10 @@ const ThankYou = () => {
   const handleClick = () => {
     navigate("/");
   };
-  const navigateAuto = useNavigate();
 
   useEffect(() => {
     setTimeout(() => {
-      navigateAuto("/");
+      navigate("/");
     }, 4000);
   }, []);
   return (

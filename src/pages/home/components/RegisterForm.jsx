@@ -49,7 +49,7 @@ const RegisterForm = () => {
       .sendForm(
         "service_5wdnu6j",
         "template_slqqcpm",
-        form.current,
+        values,
         "sxh5TJan60LQqD6Sw"
       )
       .then(
@@ -70,10 +70,10 @@ const RegisterForm = () => {
   async function submit(e) {
     try {
       let sameEmail = listRegister.find((element) => {
-        return element.email == form.current.email.value;
+        return element.email == values.Email;
       });
       let samePhone = listRegister.find((element) => {
-        return element.phone == form.current.phone.value;
+        return element.phone == values.PhoneNo;
       });
       if (!sameEmail && !samePhone) {
         const response = await fetch(import.meta.env.VITE_ZAPPIER_URL, {

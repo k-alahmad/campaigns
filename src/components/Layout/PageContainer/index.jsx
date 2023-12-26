@@ -26,7 +26,7 @@ const PageLayout = ({ children }) => {
     let page = LandingPages.find((x) => x.slug == pageSlug);
     let slashedProjectSlug = fullPath.substring(fullPath.lastIndexOf("/"));
     let projectSlug = slashedProjectSlug.substring(1);
-    let project = page.projects.find((x) => x.slug == projectSlug);
+    let project = page?.projects.find((x) => x.slug == projectSlug);
     dispatch(setCurrentPage({ page: page }));
     dispatch(setCurrentProject({ project: project }));
   }, [location.pathname]);
