@@ -12,6 +12,7 @@ import { selectListRegisterState } from "../../../redux/modal.slice";
 import { useSelector } from "react-redux";
 import { selectPage, selectProject } from "../../../redux/systemSettingsSlice";
 import { useNavigate } from "react-router-dom";
+import { register } from "../../../redux/modal.slice";
 const defaultFormState = {
   Email: "",
   FullName: "",
