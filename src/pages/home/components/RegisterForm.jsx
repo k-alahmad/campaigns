@@ -4,11 +4,9 @@ import { MdMail, MdPerson } from "react-icons/md";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
 import { useTranslation } from "react-i18next";
-import { Gender } from "../../../constants";
 import CustomInput from "../../../components/Forms/CustomInput";
 import useForm from "../../../hooks/useForm";
 import { useDispatch } from "react-redux";
-import { LandingPages } from "../../../data/PagesData";
 import emailjs from "@emailjs/browser";
 import { selectListRegisterState } from "../../../redux/modal.slice";
 import { useSelector } from "react-redux";
@@ -46,7 +44,6 @@ const RegisterForm = () => {
   const isLoading = false;
 
   const sendEmail = (e) => {
-    e.preventDefault();
     emailjs
       .sendForm(
         "service_5wdnu6j",
