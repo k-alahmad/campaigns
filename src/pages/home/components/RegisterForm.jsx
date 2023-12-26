@@ -14,10 +14,9 @@ import { selectPage, selectProject } from "../../../redux/systemSettingsSlice";
 import { useNavigate } from "react-router-dom";
 import { register } from "../../../redux/modal.slice";
 const defaultFormState = {
-  Email: "",
-  FullName: "",
-  Gender: "Male",
-  PhoneNo: "",
+  email: "",
+  fullName: "",
+  phone: "",
   Page: "",
   Project: "",
 };
@@ -69,14 +68,12 @@ const RegisterForm = () => {
     });
   }, [page, project]);
   async function submit(e) {
-    console.log(form.current);
-    console.log(values);
     try {
       let sameEmail = listRegister.find((element) => {
-        return element.email == values.Email;
+        return element.email == values.email;
       });
       let samePhone = listRegister.find((element) => {
-        return element.phoneNo == values.PhoneNo;
+        return element.phoneNo == values.phone;
       });
       if (!sameEmail && !samePhone) {
         const response = await fetch(import.meta.env.VITE_ZAPPIER_URL, {
@@ -88,8 +85,8 @@ const RegisterForm = () => {
 
         dispatch(
           register({
-            email: values.Email,
-            phoneNo: values.PhoneNo,
+            email: values.email,
+            phoneNo: values.phone,
           })
         );
 
@@ -115,22 +112,22 @@ const RegisterForm = () => {
           icon={<MdPerson className="text-white text-med" />}
           placeholder={t("formFullName")}
           type="text"
-          name="FullName"
-          id="FullName"
-          value={values.FullName}
+          name="fullName"
+          id="fullName"
+          value={values.fullName}
           onChange={handleChange}
-          error={Boolean(errors?.FullName)}
+          error={Boolean(errors?.fullName)}
         />
 
         <CustomInput
           icon={<MdMail className="text-white text-med" />}
           placeholder={t("formEmail")}
           type="email"
-          name="Email"
-          id="Email"
-          value={values.Email}
+          name="email"
+          id="email"
+          value={values.email}
           onChange={handleChange}
-          error={Boolean(errors?.Email)}
+          error={Boolean(errors?.email)}
         />
 
         <PhoneInput
@@ -146,22 +143,22 @@ const RegisterForm = () => {
             if (phone.length < 10) {
               setErrors({
                 ...errors,
-                PhoneNo: "Phone Number is atleast 10 digits",
+                phone: "Phone Number is atleast 10 digits",
               });
             } else {
-              let newObj = omit(errors, "PhoneNo");
+              let newObj = omit(errors, "phone");
               setErrors(newObj);
             }
-            setValues({ ...values, PhoneNo: phone });
+            setValues({ ...values, phone: phone });
           }}
-          value={values.PhoneNo}
+          value={values.phone}
           containerStyle={{
             outline: "none",
             outlineOffset: "0px",
             boxShadow: "none",
           }}
           containerClass={`${
-            Boolean(errors.PhoneNo)
+            Boolean(errors.phone)
               ? "!border-[1px] border-red-500"
               : "!border-b-[1px] border-white"
           } px-1 flex bg-white/20 rounded-md !outline-none`}
@@ -219,9 +216,9 @@ const RegisterForm = () => {
                       // setValues({ ...values, Project: item.ProjectName.en });
                     }}
                   >
-                    {item.ProjectName[i18n.language]}
+                    {item?.ProjectName[i18n.language]}
                   </div>
-                  {index !== page.projects.length - 1 && (
+                  {index !== page?.projects.length - 1 && (
                     <div className="h-10 w-1 bg-white/50" />
                   )}
                 </React.Fragment>
