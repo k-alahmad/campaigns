@@ -68,6 +68,8 @@ const RegisterForm = () => {
     });
   }, [page, project]);
   async function submit(e) {
+    let formData = new FormData(form.current);
+
     try {
       let sameEmail = listRegister.find((element) => {
         return element.email == values.email;
@@ -78,7 +80,7 @@ const RegisterForm = () => {
       if (!sameEmail && !samePhone) {
         const response = await fetch(import.meta.env.VITE_ZAPPIER_URL, {
           method: "POST",
-          body: form.current,
+          body: formData,
           "Content-Type": "multipart/form-data",
         });
         sendEmail(e);
