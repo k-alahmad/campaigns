@@ -71,9 +71,10 @@ const RegisterForm = () => {
 
 	async function submit(e) {
 		ReactGA.event({
-			category: "Form Submissions",
+			Name: "Submit lead V1.",
+			category: "Submit lead form",
 			action: "Clicked on Send",
-			label: "Form Submit",
+			label: "QOsvCLm36oIZEP-So-Uo",
 		});
 		let formData = new FormData(form.current);
 		formData.append("Project", values.Project);
