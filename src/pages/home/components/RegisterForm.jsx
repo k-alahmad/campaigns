@@ -67,7 +67,20 @@ const RegisterForm = () => {
       Page: page?.PageName.en,
     });
   }, [page, project]);
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof url != "undefined") {
+        window.location = url;
+      }
+    };
+    gtag("event", "conversion", {
+      send_to: "AW-10949806463/QOsvCLm36oIZEP-So-Uo",
+      event_callback: callback,
+    });
+    return false;
+  }
   async function submit(e) {
+    gtag_report_conversion();
     let formData = new FormData(form.current);
     formData.append("Project", values.Project);
     try {
