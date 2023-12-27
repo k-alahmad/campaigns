@@ -8,14 +8,17 @@ import "./index.css";
 import "./locales/index.js";
 import Loader from "./components/UI/Loader/index.jsx";
 import { HelmetProvider } from "react-helmet-async";
+import ReactGA from "react-ga";
+// Initialize React Ga with your tracking ID
+ReactGA.initialize("AW-10949806463");
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <HelmetProvider>
-    <Provider store={store}>
-      <Router>
-        <Suspense fallback={<Loader />}>
-          <App />
-        </Suspense>
-      </Router>
-    </Provider>
-  </HelmetProvider>
+	<HelmetProvider>
+		<Provider store={store}>
+			<Router>
+				<Suspense fallback={<Loader />}>
+					<App />
+				</Suspense>
+			</Router>
+		</Provider>
+	</HelmetProvider>,
 );
