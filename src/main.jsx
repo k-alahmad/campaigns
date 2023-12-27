@@ -11,6 +11,8 @@ import { HelmetProvider } from "react-helmet-async";
 import ReactGA from "react-ga";
 // Initialize React Ga with your tracking ID
 ReactGA.initialize("AW-10949806463");
+ReactGA.initialize("G-TKD3LN2FB4");
+
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<HelmetProvider>
 		<Provider store={store}>
