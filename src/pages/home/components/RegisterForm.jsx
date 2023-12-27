@@ -74,7 +74,7 @@ const RegisterForm = () => {
 			Name: "Submit lead V1.",
 			category: "Submit lead form",
 			action: "Clicked on Send",
-			label: "QOsvCLm36oIZEP-So-Uo",
+			label: "w0fdCKfllYMZEP-So-Uo",
 		});
 		let formData = new FormData(form.current);
 		formData.append("Project", values.Project);
