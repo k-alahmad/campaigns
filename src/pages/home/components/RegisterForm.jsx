@@ -171,10 +171,10 @@ const RegisterForm = () => {
 						Boolean(errors.phone)
 							? "!border-[1px] border-red-500"
 							: "!border-b-[1px] border-white"
-					} px-1 flex bg-white/20 rounded-md !outline-none`}
+					} px-1 flex bg-white/20 rounded-md !outline-none `}
 					inputClass={`!bg-transparent !text-white !w-full !py-3 !text-lg !h-full !border-none ${
 						i18n.language == "en" ? "px-0" : "mx-10"
-					} !outline-none`}
+					} !outline-none `}
 					buttonClass={`!border-none !outline-none !text-lg `}
 					buttonStyle={{
 						direction: "ltr",
@@ -182,16 +182,16 @@ const RegisterForm = () => {
 						outlineOffset: "0px",
 						boxShadow: "none",
 					}}
-					dropdownClass='!backdrop-blur-[21px]'
+					dropdownClass='!backdrop-blur-[21px] '
 					dropdownStyle={{
-						backgroundColor: page?.Colors?.Primary,
-						opacity: "70%",
-						color: page?.Colors?.Third,
+						backgroundColor: page?.Colors?.Secondary,
+						opacity: "100%",
+						color: page?.Colors?.Primary,
 					}}
-					searchClass='!backdrop-blur-[21px]'
+					searchClass='!backdrop-blur-[21px] !bg-[#0000]'
 					searchStyle={{
 						backgroundColor: page?.Colors?.Primary,
-						opacity: "70%",
+						opacity: "80%",
 						color: page?.Colors?.Secondary,
 					}}
 					inputStyle={{
@@ -201,7 +201,6 @@ const RegisterForm = () => {
 						boxShadow: "none",
 					}}
 				/>
-
 				<div className='space-y-1'>
 					<p className='text-tiny text-white'>{t("Project")} </p>
 					<div className='flex justify-center items-center border-[1px] rounded-md p-1 gap-x-2'>
